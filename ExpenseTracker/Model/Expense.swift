@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct Expense: Codable, Identifiable {
   var id = UUID()
@@ -32,5 +33,15 @@ extension Expense {
       }
     }
     return []
+  }
+  
+  var amountColor: Color {
+    if amount > 100 {
+      return .red
+    } else if amount < 100 && amount > 10 {
+      return .blue
+    } else {
+      return .green
+    }
   }
 }

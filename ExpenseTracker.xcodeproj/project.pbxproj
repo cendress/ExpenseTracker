@@ -13,6 +13,7 @@
 		9D96B6482AB9CF0F002AC628 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D96B6472AB9CF0F002AC628 /* Preview Assets.xcassets */; };
 		9D96B64F2AB9D01D002AC628 /* Expense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D96B64E2AB9D01D002AC628 /* Expense.swift */; };
 		9D96B6512AB9D556002AC628 /* AddExpenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D96B6502AB9D556002AC628 /* AddExpenseView.swift */; };
+		9D96B6532ABA1C7B002AC628 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D96B6522ABA1C7B002AC628 /* DateFormatter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		9D96B6472AB9CF0F002AC628 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		9D96B64E2AB9D01D002AC628 /* Expense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expense.swift; sourceTree = "<group>"; };
 		9D96B6502AB9D556002AC628 /* AddExpenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseView.swift; sourceTree = "<group>"; };
+		9D96B6522ABA1C7B002AC628 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,11 +57,10 @@
 		9D96B63F2AB9CF0D002AC628 /* ExpenseTracker */ = {
 			isa = PBXGroup;
 			children = (
-				9D96B6402AB9CF0D002AC628 /* ExpenseTrackerApp.swift */,
-				9D96B6422AB9CF0D002AC628 /* ContentView.swift */,
-				9D96B6502AB9D556002AC628 /* AddExpenseView.swift */,
-				9D96B64E2AB9D01D002AC628 /* Expense.swift */,
-				9D96B6442AB9CF0F002AC628 /* Assets.xcassets */,
+				9D96B6542ABA20BF002AC628 /* Model */,
+				9D96B6552ABA20D0002AC628 /* Views */,
+				9D96B6572ABA210B002AC628 /* Supporting Files */,
+				9D96B6562ABA20DE002AC628 /* Helper Code */,
 				9D96B6462AB9CF0F002AC628 /* Preview Content */,
 			);
 			path = ExpenseTracker;
@@ -71,6 +72,40 @@
 				9D96B6472AB9CF0F002AC628 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		9D96B6542ABA20BF002AC628 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9D96B64E2AB9D01D002AC628 /* Expense.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9D96B6552ABA20D0002AC628 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9D96B6422AB9CF0D002AC628 /* ContentView.swift */,
+				9D96B6502AB9D556002AC628 /* AddExpenseView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		9D96B6562ABA20DE002AC628 /* Helper Code */ = {
+			isa = PBXGroup;
+			children = (
+				9D96B6522ABA1C7B002AC628 /* DateFormatter.swift */,
+			);
+			path = "Helper Code";
+			sourceTree = "<group>";
+		};
+		9D96B6572ABA210B002AC628 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9D96B6402AB9CF0D002AC628 /* ExpenseTrackerApp.swift */,
+				9D96B6442AB9CF0F002AC628 /* Assets.xcassets */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -147,6 +182,7 @@
 				9D96B6432AB9CF0D002AC628 /* ContentView.swift in Sources */,
 				9D96B6412AB9CF0D002AC628 /* ExpenseTrackerApp.swift in Sources */,
 				9D96B6512AB9D556002AC628 /* AddExpenseView.swift in Sources */,
+				9D96B6532ABA1C7B002AC628 /* DateFormatter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
