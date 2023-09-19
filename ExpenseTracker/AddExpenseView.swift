@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AddExpenseView: View {
   @State private var name = ""
-  @State private var amount = ""
+  @State private var amount: Double? = nil
   @State private var type: String = "Want"
   
   @Binding var expenses: [Expense]
@@ -19,8 +19,13 @@ struct AddExpenseView: View {
       NavigationView {
         Form {
           TextField("Name", text: $name)
-          TextField("Amount", text: $amount)
-            .keyboardType(.decimalPad)
+          
+          HStack {
+            Text("$")
+            TextField("Amount", value: $amount, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
+              .keyboardType(.decimalPad)
+          }
+          
           Picker("Select type", selection: $type) {
             Text("Want").tag("Want")
             Text("Need").tag("Need")
@@ -30,10 +35,11 @@ struct AddExpenseView: View {
         .navigationTitle("Add Expense")
         .toolbar {
           ToolbarItem(placement: .navigationBarTrailing) {
-            Button("Add") {
-              if let actualAmount = Double(amount) {
+            Button("Save") {
+              if let actualAmount = amount {
                 let expense = Expense(name: name, amount: actualAmount, type: type, date: Date())
                 expenses.append(expense)
+                Expense.saveExpenses(expenses)
                 presentationMode.wrappedValue.dismiss()
               }
             }

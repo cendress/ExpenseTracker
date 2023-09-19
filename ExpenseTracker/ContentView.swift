@@ -8,26 +8,49 @@
 import SwiftUI
 
 struct ContentView: View {
-  let expenses: [Expense] = [
-    Expense(name: "Toilet paper", amount: 5.50, type: "Need", date: Date()),
-    Expense(name: "Diapers", amount: 10.20, type: "Need", date: Date())
-  ]
+  @State private var expenses: [Expense] = Expense.loadExpenses()
+  @State private var isShowingAddExpense = false
+  
   var body: some View {
     NavigationView {
-      List(expenses) { expense in
-        Text("\(expense.name): \(expense.amount, specifier: "%.2f")")
+      List {
+        ForEach(expenses) { expense in
+          HStack {
+            VStack(alignment: .leading) {
+              Text(expense.name)
+                .font(.headline)
+              Text(expense.type)
+            }
+            
+            Spacer()
+            
+            Text("$\(expense.amount.formatted())")
+          }
+        }
+        .onDelete(perform: delete)
       }
       .navigationTitle("Expense Tracker")
       .toolbar {
         ToolbarItem(placement: .navigationBarTrailing) {
           Button {
-            //action
+            isShowingAddExpense.toggle()
           } label: {
             Image(systemName: "plus")
           }
         }
+        ToolbarItem(placement: .navigationBarLeading) {
+          EditButton()
+        } 
+      }
+      .sheet(isPresented: $isShowingAddExpense) {
+        AddExpenseView(expenses: $expenses)
       }
     }
+  }
+  
+  func delete(at offsets: IndexSet) {
+    expenses.remove(atOffsets: offsets)
+    Expense.saveExpenses(expenses)
   }
 }
 
@@ -36,3 +59,5 @@ struct ContentView_Previews: PreviewProvider {
     ContentView()
   }
 }
+
+

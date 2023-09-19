@@ -15,3 +15,22 @@ struct Expense: Codable, Identifiable {
   let type: String
   let date: Date
 }
+
+extension Expense {
+  static func saveExpenses(_ expenses: [Expense]) {
+    let encoder = JSONEncoder()
+    if let encoded = try? encoder.encode(expenses) {
+      UserDefaults.standard.set(encoded, forKey: "Expenses")
+    }
+  }
+  
+  static func loadExpenses() -> [Expense] {
+    if let savedExpenses = UserDefaults.standard.data(forKey: "Expenses") {
+      let decoder = JSONDecoder()
+      if let loadedExpenses = try? decoder.decode([Expense].self, from: savedExpenses) {
+        return loadedExpenses
+      }
+    }
+    return []
+  }
+}
