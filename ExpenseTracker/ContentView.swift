@@ -8,19 +8,31 @@
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+  let expenses: [Expense] = [
+    Expense(name: "Toilet paper", amount: 5.50, type: "Need", date: Date()),
+    Expense(name: "Diapers", amount: 10.20, type: "Need", date: Date())
+  ]
+  var body: some View {
+    NavigationView {
+      List(expenses) { expense in
+        Text("\(expense.name): \(expense.amount, specifier: "%.2f")")
+      }
+      .navigationTitle("Expense Tracker")
+      .toolbar {
+        ToolbarItem(placement: .navigationBarTrailing) {
+          Button {
+            //action
+          } label: {
+            Image(systemName: "plus")
+          }
         }
-        .padding()
+      }
     }
+  }
 }
 
 struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
+  static var previews: some View {
+    ContentView()
+  }
 }
